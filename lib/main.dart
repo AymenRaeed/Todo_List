@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talbat1/pages/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            Text('Hello World!'),
-            Text('database 1'),
-            ]
-          )
-        ),
-      ),
+      home: Homepage(),
     );
   }
 }
