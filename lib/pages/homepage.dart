@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talbat1/pages/todo_list.dart';
+import 'package:talbat1/pages/todo_tile.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -20,6 +20,15 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +40,10 @@ class _HomepageState extends State<Homepage> {
           decoration: const BoxDecoration(color: Colors.amber),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: createNewTask,
+          backgroundColor: Colors.amber,
+          child: const Icon(Icons.add)),
       body: ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
