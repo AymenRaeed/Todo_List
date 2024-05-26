@@ -1,22 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:talbat1/Util/my_button.dart';
 
 class DialogBox extends StatelessWidget {
-  const DialogBox({super.key});
+  final TextEditingController controller;
+  final void Function() onsave;
+  final void Function() onCancel;
+
+  const DialogBox({
+    super.key,
+    required this.controller,
+    required this.onsave,
+    required this.onCancel,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.amber,
-      content: Container(
+      content: SizedBox(
         height: 120,
-        child: const Column(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
-              decoration: InputDecoration(
+              controller: controller,
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Add new task"),
             ),
             Row(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                MyButton(
+                  text: 'Save',
+                  onPressed: onsave,
+                ),
+                const SizedBox(width: 88),
+                MyButton(text: 'Cancel', onPressed: onCancel)
+              ],
             )
           ],
         ),
